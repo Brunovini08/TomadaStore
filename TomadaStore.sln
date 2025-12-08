@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomadaStore.Models", "TomadaStore\TomadaStore.Models.csproj", "{6996E33D-061E-48DD-998C-EB7C410320B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomadaStore.CustomerAPI", "TomadaStore.CustomerAPI\TomadaStore.CustomerAPI.csproj", "{2F4D2C1D-A241-4279-9388-AF378270F0C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomadaStore.ProductAPI", "TomadaStore.ProductAPI\TomadaStore.ProductAPI.csproj", "{AE67B544-6A90-416B-A57B-F85F20121487}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomadaStore.SaleAPI", "TomadaStore.SaleAPI\TomadaStore.SaleAPI.csproj", "{8DA52191-354C-4ECF-BCA8-2FF04C1FA70B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomadaStore.SaleConsumerAPI", "TomadaStore.SaleConsumerAPI\TomadaStore.SaleConsumerAPI.csproj", "{7A1F635B-8E4C-4EB0-B98B-53A7A3092263}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6996E33D-061E-48DD-998C-EB7C410320B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6996E33D-061E-48DD-998C-EB7C410320B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6996E33D-061E-48DD-998C-EB7C410320B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6996E33D-061E-48DD-998C-EB7C410320B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F4D2C1D-A241-4279-9388-AF378270F0C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F4D2C1D-A241-4279-9388-AF378270F0C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F4D2C1D-A241-4279-9388-AF378270F0C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F4D2C1D-A241-4279-9388-AF378270F0C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE67B544-6A90-416B-A57B-F85F20121487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE67B544-6A90-416B-A57B-F85F20121487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE67B544-6A90-416B-A57B-F85F20121487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE67B544-6A90-416B-A57B-F85F20121487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DA52191-354C-4ECF-BCA8-2FF04C1FA70B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DA52191-354C-4ECF-BCA8-2FF04C1FA70B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DA52191-354C-4ECF-BCA8-2FF04C1FA70B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DA52191-354C-4ECF-BCA8-2FF04C1FA70B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A1F635B-8E4C-4EB0-B98B-53A7A3092263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A1F635B-8E4C-4EB0-B98B-53A7A3092263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A1F635B-8E4C-4EB0-B98B-53A7A3092263}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A1F635B-8E4C-4EB0-B98B-53A7A3092263}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CAB17576-3C54-4258-999B-4CE78CEDD4D6}
+	EndGlobalSection
+EndGlobal

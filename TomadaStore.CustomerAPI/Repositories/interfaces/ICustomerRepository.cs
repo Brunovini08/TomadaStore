@@ -1,0 +1,13 @@
+﻿using TomadaStore.Models.DTOs.Customer;
+using TomadaStore.Models.Models;
+
+namespace TomadaStore.CustomerAPI.Repositories.interfaces
+{
+    public interface ICustomerRepository
+    {
+        Task InsertCustomerAsync(Customer customer);
+        Task<List<CustomerResponseDTO>> GetAllCustomersAsync();
+        Task<CustomerResponseDTO> GetCustomerByIdAsync(int id);
+        Task UpdateSituationCustomerAsync(CustomerUpdateSituationDTO customer, int id);
+    }
+}
