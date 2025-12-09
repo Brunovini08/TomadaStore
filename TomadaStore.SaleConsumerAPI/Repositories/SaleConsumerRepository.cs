@@ -45,7 +45,7 @@ namespace TomadaStore.SaleConsumerAPI.Repositories
                     );
                     products.Add(product);
                 }
-                var totalPrice = sale.Products.Sum(p => p.Price * sale.Products.Count);
+                var totalPrice = sale.Products.Sum(p => p.Price);
                 var newSale = new Sale(customer, products, totalPrice, sale.Approvals);
                 await _salesCollection.InsertOneAsync(newSale);
             }

@@ -13,8 +13,7 @@ namespace TomadaStore.Payment.Services
         {
             try
             {
-                var totalPrice = saleMessage.Products.Sum(p => p.Price * saleMessage.Products.Count);
-
+                var totalPrice = saleMessage.Products.Sum(p => p.Price);
                 List<Product> products = new List<Product>();
                 foreach (var productDto in saleMessage.Products)
                 {
