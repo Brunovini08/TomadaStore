@@ -14,37 +14,15 @@ namespace TomadaStore.SaleConsumerAPI.Repositories
         private readonly IMongoCollection<Sale> _salesCollection;
         public SaleConsumerRepository(ConnectionDB connectionDB)
         {
-            _salesCollection = connectionDB.GetSalesCollection();  
+            _salesCollection = connectionDB.GetSalesCollection();
         }
-        public async Task CreateSaleAsync(CustomerResponseDTO customer, List<ProductResponseDTO> products)
+        public async Task CreateSaleAsync(Sale sale)
         {
             try
             {
-                List<Product> productList = new List<Product>();
-                foreach(var product in products)
-                {
-                    productList.Add(
-                        new Product(
-                            product.Id,
-                            product.Name,
-                            product.Description,
-                            product.Price,
-                            new Category(
-                                product.Category.Id,
-                                product.Category.Name,
-                                product.Category.Description
-                            )
-                        )
-                    );
-                }
-                var totalAmount = productList.Sum(p => p.Price);
-                await _salesCollection.InsertOneAsync(
-                    new Sale(
-                    new Customer(customer.Id, customer.FirstName, customer.LastName, customer.Email, customer.PhoneNumber, customer.Situation),
-                    productList,
-                    totalAmount
-                ));
-            } catch(Exception ex)
+                await _salesCollection.InsertOneAsync(sale);
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }

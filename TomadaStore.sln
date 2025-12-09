@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomadaStore.SaleAPI", "Toma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomadaStore.SaleConsumerAPI", "TomadaStore.SaleConsumerAPI\TomadaStore.SaleConsumerAPI.csproj", "{7A1F635B-8E4C-4EB0-B98B-53A7A3092263}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomadaStore.Payment", "TomadaStore.Payment\TomadaStore.Payment.csproj", "{23EC0C28-4071-4F43-9B96-25E80E0D2E67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7A1F635B-8E4C-4EB0-B98B-53A7A3092263}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A1F635B-8E4C-4EB0-B98B-53A7A3092263}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A1F635B-8E4C-4EB0-B98B-53A7A3092263}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23EC0C28-4071-4F43-9B96-25E80E0D2E67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23EC0C28-4071-4F43-9B96-25E80E0D2E67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23EC0C28-4071-4F43-9B96-25E80E0D2E67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23EC0C28-4071-4F43-9B96-25E80E0D2E67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

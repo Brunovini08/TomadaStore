@@ -10,17 +10,20 @@ namespace TomadaStore.Models.Models
     public class Sale
     {
 
-        public ObjectId Id { get; private set; }
+        public string Id { get; private set; }
         public Customer Customer { get; private set; }
         public List<Product> Products { get; private set; }
         public DateTime SaleDate { get; private set; }
         public decimal TotalPrice { get; private set; }
-        public Sale(Customer customer, List<Product> products, decimal totalPrice)
+        public bool? Approvals { get; set; }
+        public Sale(Customer customer, List<Product> products, decimal totalPrice, bool? approvals)
         {
+            Id = ObjectId.GenerateNewId().ToString();
             Customer = customer;
             Products = products;
             SaleDate = DateTime.Now;
             TotalPrice = totalPrice;
+            Approvals = approvals;
         }
     }
 }

@@ -1,5 +1,8 @@
-﻿using System.Text.Json;
+﻿using RabbitMQ.Client;
+using System.Text;
+using System.Text.Json;
 using TomadaStore.Models.DTOs.Sale;
+using TomadaStore.Models.Models;
 using TomadaStore.SaleConsumerAPI.Repositories.Interfaces;
 using TomadaStore.SaleConsumerAPI.Services.Interfaces;
 
@@ -12,15 +15,14 @@ namespace TomadaStore.SaleConsumerAPI.Services
         {
             _saleRepository = saleRepository;
         }
-        public Task ProcessSaleMessageAsync(string saleMessage)
+        public Task ProcessSaleMessageAsync(Sale sale)
         {
             try
             {
-                var sale = JsonSerializer.Deserialize<SaleMessageDTO>(saleMessage);
 
                 if (sale != null)
                 {
-                    return _saleRepository.CreateSaleAsync(sale.Customer, sale.Products);
+                    return _saleRepository.CreateSaleAsync(sale);
                 }
                 else
                 {

@@ -43,7 +43,8 @@ namespace TomadaStore.SaleAPI.Repositories
                     new Sale(
                     new Customer(customer.Id, customer.FirstName, customer.LastName, customer.Email, customer.PhoneNumber, customer.Situation),
                     productList,
-                    totalAmount
+                    totalAmount,
+                    false
                 ));
             } catch(Exception ex)
             {

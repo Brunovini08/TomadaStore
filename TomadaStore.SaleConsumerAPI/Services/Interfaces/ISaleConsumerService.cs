@@ -1,7 +1,10 @@
-﻿namespace TomadaStore.SaleConsumerAPI.Services.Interfaces
+﻿using TomadaStore.Models.DTOs.Sale;
+using TomadaStore.Models.Models;
+
+namespace TomadaStore.SaleConsumerAPI.Services.Interfaces
 {
     public interface ISaleConsumerService
     {
-        public Task ProcessSaleMessageAsync(string saleMessage);
+        public Task ProcessSaleMessageAsync(Sale sale);
     }
 }

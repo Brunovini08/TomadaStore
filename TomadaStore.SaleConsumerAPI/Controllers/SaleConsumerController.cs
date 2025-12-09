@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
+using System.Text.Json;
+using TomadaStore.Models.DTOs.Sale;
+using TomadaStore.Models.Models;
 using TomadaStore.SaleConsumerAPI.Services.Interfaces;
 
 namespace TomadaStore.SaleConsumerAPI.Controllers
@@ -27,8 +30,8 @@ namespace TomadaStore.SaleConsumerAPI.Controllers
                 using var connection = await factory.CreateConnectionAsync();
                 using var channel = await connection.CreateChannelAsync();
 
-                await channel.QueueDeclareAsync(queue: "sale", durable: false, exclusive: false, autoDelete: false,
-                    arguments: null);
+                await channel.QueueDeclareAsync(queue: "payment", durable: false, exclusive: false, autoDelete: false,
+                    arguments: null);   
 
                 var consumer = new AsyncEventingBasicConsumer(channel);
 
@@ -36,10 +39,11 @@ namespace TomadaStore.SaleConsumerAPI.Controllers
                 {
                     var body = ea.Body.ToArray();
                     var message = Encoding.UTF8.GetString(body);
-                    return _saleConsumerService.ProcessSaleMessageAsync(message);
+                    var sale = JsonSerializer.Deserialize<Sale>(message);
+                    return _saleConsumerService.ProcessSaleMessageAsync(sale);
                 };
 
-                await channel.BasicConsumeAsync("sale", autoAck: true, consumer: consumer);
+                await channel.BasicConsumeAsync("payment", autoAck: true, consumer: consumer);
                 return Ok();
             }
             catch (Exception ex)

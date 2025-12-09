@@ -1,4 +1,5 @@
-﻿using TomadaStore.Models.Models.Enums.Customer;
+﻿using System.Text.Json.Serialization;
+using TomadaStore.Models.Models.Enums.Customer;
 
 namespace TomadaStore.Models.Models
 {
@@ -11,6 +12,13 @@ namespace TomadaStore.Models.Models
         public string Email { get; private set; }
         public string? PhoneNumber { get; private set; }
         public SituationType Situation { get; private set; }
+
+        [JsonConstructor]
+        public Customer()
+        {
+            
+        }
+
         public Customer(int id, string firstName, string lastName, string email, string? phoneNumber, SituationType situation)
         {
             Id = id;

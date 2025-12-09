@@ -20,7 +20,7 @@ namespace TomadaStore.Models.Models
 
         public Product(string id, string name, string description, decimal price, Category category)
         {
-            Id = ObjectId.Parse(id);
+            Id = id;
             Name = name;
             Description = description;
             Price = price;
@@ -32,7 +32,9 @@ namespace TomadaStore.Models.Models
             
         }
 
-        public ObjectId Id { get; private set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public decimal Price { get; private set; }

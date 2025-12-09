@@ -47,7 +47,7 @@ namespace TomadaStore.ProductAPI.Repositories
         {
             try
             {
-                var product = await _productsCollection.FindAsync(product => product.Id == ObjectId.Parse(id));
+                var product = await _productsCollection.FindAsync(product => product.Id == id);
                 var result = product.FirstOrDefault();
                 if (result == null)
                 {
