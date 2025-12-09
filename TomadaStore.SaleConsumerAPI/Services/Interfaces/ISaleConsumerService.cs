@@ -5,6 +5,6 @@ namespace TomadaStore.SaleConsumerAPI.Services.Interfaces
 {
     public interface ISaleConsumerService
     {
-        public Task ProcessSaleMessageAsync(Sale sale);
+        public Task ProcessSaleMessageAsync(SaleConsumerResponseDTO sale);
     }
 }

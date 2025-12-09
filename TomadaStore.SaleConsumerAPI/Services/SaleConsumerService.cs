@@ -15,7 +15,7 @@ namespace TomadaStore.SaleConsumerAPI.Services
         {
             _saleRepository = saleRepository;
         }
-        public Task ProcessSaleMessageAsync(Sale sale)
+        public Task ProcessSaleMessageAsync(SaleConsumerResponseDTO sale)
         {
             try
             {

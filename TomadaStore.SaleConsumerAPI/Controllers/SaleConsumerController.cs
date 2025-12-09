@@ -39,7 +39,7 @@ namespace TomadaStore.SaleConsumerAPI.Controllers
                 {
                     var body = ea.Body.ToArray();
                     var message = Encoding.UTF8.GetString(body);
-                    var sale = JsonSerializer.Deserialize<Sale>(message);
+                    var sale = JsonSerializer.Deserialize<SaleConsumerResponseDTO>(message);
                     return _saleConsumerService.ProcessSaleMessageAsync(sale);
                 };
 

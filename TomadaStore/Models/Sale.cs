@@ -1,10 +1,5 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TomadaStore.Models.Models
 {
@@ -18,6 +13,10 @@ namespace TomadaStore.Models.Models
         public DateTime SaleDate { get; private set; }
         public decimal TotalPrice { get; private set; }
         public bool? Approvals { get; set; }
+        public Sale()
+        {
+            
+        }
         public Sale(Customer customer, List<Product> products, decimal totalPrice, bool? approvals)
         {
             Id = ObjectId.GenerateNewId().ToString();

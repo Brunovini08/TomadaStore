@@ -75,7 +75,7 @@ namespace TomadaStore.SaleAPI.Services
                 foreach (var item in saleRequestDTO.ProductsIds)
                 {
 
-                    var product = await _httpClientProduct.GetFromJsonAsync<ProductResponseDTO>(item.ToString());
+                    var product = await _httpClientProduct.GetFromJsonAsync<ProductResponseDTO>(item);
                     if (product != null)
                     {
                         productRequestDTOs.Add(new ProductResponseDTO
