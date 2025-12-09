@@ -15,80 +15,48 @@ namespace TomadaStore.Payment.Services
             {
                 var totalPrice = saleMessage.Products.Sum(p => p.Price * saleMessage.Products.Count);
 
+                List<Product> products = new List<Product>();
+                foreach (var productDto in saleMessage.Products)
+                {
+                    var product = new Product(
+                        productDto.Id,
+                        productDto.Name,
+                        productDto.Description,
+                        productDto.Price,
+                        new Category(
+                            productDto.Category.Id,
+                            productDto.Category.Name,
+                            productDto.Category.Description
+                        )
+                    );
+                    products.Add(product);
+                }
+                var customer = new Customer(
+                    saleMessage.Customer.Id,
+                    saleMessage.Customer.FirstName,
+                    saleMessage.Customer.LastName,
+                    saleMessage.Customer.Email,
+                    saleMessage.Customer.PhoneNumber,
+                    saleMessage.Customer.Situation
+                );
+                var factory = new ConnectionFactory { HostName = "localhost" };
+                using var connection = await factory.CreateConnectionAsync();
+                using var channel = await connection.CreateChannelAsync();
+
+                await channel.QueueDeclareAsync(queue: "payment", durable: false, exclusive: false, autoDelete: false,
+                    arguments: null);
+
                 if (totalPrice > 1000)
                 {
-                    var customer = new Customer(
-                        saleMessage.Customer.Id,
-                        saleMessage.Customer.FirstName,
-                        saleMessage.Customer.LastName,
-                        saleMessage.Customer.Email,
-                        saleMessage.Customer.PhoneNumber,
-                        saleMessage.Customer.Situation
-                    );
-
-                    List<Product> products = new List<Product>();
-                    foreach (var productDto in saleMessage.Products)
-                    {
-                        var product = new Product(
-                            productDto.Id,
-                            productDto.Name,
-                            productDto.Description,
-                            productDto.Price,
-                            new Category(
-                                productDto.Category.Id,
-                                productDto.Category.Name,
-                                productDto.Category.Description
-                            )
-                        );
-                        products.Add(product);
-                    }
 
                     var sale = new Sale(customer, products, totalPrice, false);
-                    var factory = new ConnectionFactory { HostName = "localhost" };
-                    using var connection = await factory.CreateConnectionAsync();
-                    using var channel = await connection.CreateChannelAsync();
-                    await channel.QueueDeclareAsync(queue: "payment", durable: false, exclusive: false, autoDelete: false,
-                        arguments: null);
                     var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(sale));
                     await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "payment", body: body);
                 }
                 else
                 {
-                    var customer = new Customer(
-                       saleMessage.Customer.Id,
-                       saleMessage.Customer.FirstName,
-                       saleMessage.Customer.LastName,
-                       saleMessage.Customer.Email,
-                       saleMessage.Customer.PhoneNumber,
-                       saleMessage.Customer.Situation
-                   );
-
-                    List<Product> products = new List<Product>();
-                    foreach (var productDto in saleMessage.Products)
-                    {
-                        var product = new Product(
-                            productDto.Id,
-                            productDto.Name,
-                            productDto.Description,
-                            productDto.Price,
-                            new Category(
-                                productDto.Category.Id,
-                                productDto.Category.Name,
-                                productDto.Category.Description
-                            )
-                        );
-                        products.Add(product);
-                    }
-
                     var sale = new Sale(customer, products, totalPrice, true);
-                    var factory = new ConnectionFactory { HostName = "localhost" };
-                    using var connection = await factory.CreateConnectionAsync();
-                    using var channel = await connection.CreateChannelAsync();
-
-                    await channel.QueueDeclareAsync(queue: "payment", durable: false, exclusive: false, autoDelete: false,
-                        arguments: null);
-
-                    var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<Sale>(sale));
+                    var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(sale));
                     await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "payment", body: body);
                 }
             }
